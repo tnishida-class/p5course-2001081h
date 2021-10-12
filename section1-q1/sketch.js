@@ -2,12 +2,13 @@
 function setup(){
   createCanvas(200, 200);
   background(255);
-  
+
 
   // 空欄を埋めて神戸市のロゴマークを完成させよう
   noFill();
   strokeWeight(25);
   strokeCap(SQUARE);
+  stroke(0,128,9)
   arc(100 + 25, 100, 100, 100, QUARTER_PI * 3, QUARTER_PI * 3 + PI);
     arc(100 - 28, 100, 100, 100, QUARTER_PI * 5, QUARTER_PI * 5 + PI);
 
