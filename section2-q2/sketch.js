@@ -7,24 +7,24 @@ function setup() {
     for(let j = 0; j < 8; j++){
 
       // BLANK[1] (hint: rectのx座標は size * i, y座標はsize * j)
-if((i+j)%2==1){fill(51);
+if((i+j)%2==0){fill(255);
 }
 else{
-  noFill();
+  fill(128);
 }
       rect(size*i, size*j, size,size);
 
-if(j<3){
-  fill(255,0,0)
+// 丸いコマを書く
+if((i+j)%2==1&&j<3){
+  fill(255,0,0);
+  noStroke();
+  ellipse(size*i + size/2,size*j+size/2,size*0.8);
 }
-else if((i+j)%2==0,j<5){
-  noFill()
-  noStroke()
+else if((i+j)%2==1&&j>4){
+  fill(0);
+  noStroke();
+  ellipse(size*i + size/2,size*j+size/2,size*0.8);
 }
-
-else if((i+j)%2==0&&j<8)
-{fill(0,0,0)}
-
-circle(size*(i+1/2),size*(j+1/2),size*1/2);}
+}
 }
 }
