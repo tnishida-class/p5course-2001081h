@@ -1,8 +1,5 @@
 
-//最終課題 腹巻をまいたでべそのおじさんのへそを動かすゲームです
-
-
-
+//最終課題 腹巻をまいたでべそのおじさんのへそを動かすゲームです。
 
 
 let x, y, vx, vy;
@@ -16,11 +13,7 @@ function setup(){
   vy = 0;
   grabbed = false;
 
-
-
 }
-
-
 
 function draw(){
   background(255)
