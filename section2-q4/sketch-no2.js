@@ -1,26 +1,59 @@
-// ギリシャ国旗
-function setup() {
-  const blue = color(0, 51, 160);
-  createCanvas(270, 180);
-  // noStroke();
-  background(255);
+// テキスト「インタラクティブなアニメーション」
+let x, y, vx, vy;
+let grabbed; // 円をつかんでいるかどうかを記憶するために使う変数
+
+function setup(){
+  createCanvas(windowWidth, windowHeight);
+  x = width / 2;
+  y = height / 2;
+  vx = 0;
+  vy = 0;
+  grabbed = false;
+}
 
 
-
-  let d = height / 9; // 縞1本の太さ
-
-  for(let i = 0; i < 9; i++){
- fill(blue)
-
-
-    // BLANK[1] (hint: 縞の色を交互に変えるには2で割った余りを使おう)
-    rect(0, i * d, width, (i + 1) * d);  //四角
+function draw(){
+  background(160, 192, 255);
+  ellipse(x, y, 30);
+  if(!grabbed){ // つかんでいないときだけアニメーションさせる
+    x += vx;
+    y += vy;
+    if(x < 0 || x > width){ vx = -0.8 * vx; }
+    if(y < 0 || y > height){ vy = -0.8 * vy; }
+    x = constrain(x, 0, width);
+    y = constrain(y, 0, height);
   }
+}
 
-  fill(blue);
-  let size = d * 5;
-  rect(0, 0, size, size);
+function keyPressed(){
+  if(key == " "){　// スペースキーを押したらリセット
+    x = width / 2;
+    y = height / 2;
+    vx = 0;
+    vy = 0;
+    grabbed = false;
+  }
+}
 
-  fill(255);
-  // BLANK[2] (hint: 白い十字を描くには rect を二つ描こう)
+function mousePressed(){
+  grabbed = dist(mouseX, mouseY, x, y) < 30; // distは２点の距離を求める関数
+}
+
+function mouseDragged(){
+  if(grabbed){
+    x = mouseX;
+    y = mouseY;
+  }
+}
+
+function mouseReleased(){
+  if(grabbed){
+    grabbed = false;
+    vx = mouseX - pmouseX;
+    vy = mouseY - pmouseY;
+  }
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
 }
