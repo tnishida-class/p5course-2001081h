@@ -5,11 +5,16 @@ function setup() {
   // noStroke();
   background(255);
 
+
+
   let d = height / 9; // 縞1本の太さ
 
   for(let i = 0; i < 9; i++){
+ fill(blue)
+
+
     // BLANK[1] (hint: 縞の色を交互に変えるには2で割った余りを使おう)
-    rect(0, i * d, width, (i + 1) * d);
+    rect(0, i * d, width, (i + 1) * d);  //四角
   }
 
   fill(blue);
