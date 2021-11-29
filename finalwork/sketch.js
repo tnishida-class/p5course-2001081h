@@ -1,16 +1,15 @@
-let img;
-function preload() {
-  img = loadImage('fashion_usugi_girl.png');
-}
 
-function setup() {
-  createCanvas(500, 500);
+//最終課題 腹巻をまいたでべそのおじさんのへそを動かすゲームです
 
-  // 表示する画像の左上隅の座標を (10, 10) にする
-  // 表示する画像の幅と高さを 100 x 100 にする
-  imageMode(CENTER);
-  image(img, 150, 100,  150, 100);
-}
+
+
+
+
+
+
+
+
+
 let x, y, vx, vy;
 let grabbed; // 円をつかんでいるかどうかを記憶するために使う変数
 
@@ -21,11 +20,35 @@ function setup(){
   vx = 0;
   vy = 0;
   grabbed = false;
+
+
+
 }
 
+
+
 function draw(){
-  background(160, 192, 255);
+  background(255)
+
+  for(let i = 0; i < 1000; i++){
+
+    if(i % 2 == 0){
+      strokeWeight(2);
+    }
+    else{
+      strokeWeight(1);
+    }
+    let x = i * 10 + 10;
+    line(x, 0, x, 100);
+  }
+
+
+
+
   ellipse(x, y, 30);
+    fill(0)
+  ellipse(x,y,5)
+ fill(255)
   if(!grabbed){ // つかんでいないときだけアニメーションさせる
     x += vx;
     y += vy;
@@ -37,7 +60,7 @@ function draw(){
 }
 
 function keyPressed(){
-  if(key == " "){ // スペースキーを押したらリセット
+  if(key == " "){　// スペースキーを押したらリセット
     x = width / 2;
     y = height / 2;
     vx = 0;
@@ -47,11 +70,11 @@ function keyPressed(){
 }
 
 function mousePressed(){
-  grabbed = dist(mouseX, mouseY, x, y) < 30; // 新登場の dist 関数は２点の距離を求める関数（grabbed には true か false が代入される）
+  grabbed = dist(mouseX, mouseY, x, y) < 30; // distは２点の距離を求める関数
 }
 
 function mouseDragged(){
-  if(grabbed){ // つかんでいるときは円がマウスに追従する
+  if(grabbed){
     x = mouseX;
     y = mouseY;
   }
@@ -60,7 +83,11 @@ function mouseDragged(){
 function mouseReleased(){
   if(grabbed){
     grabbed = false;
-    vx = mouseX - pmouseX; // pmouseX は少し前のマウスのx座標
-    vy = mouseY - pmouseY; // pmouseY は少し前のマウスのy座標
+    vx = mouseX - pmouseX;
+    vy = mouseY - pmouseY;
   }
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth, windowHeight);
 }
